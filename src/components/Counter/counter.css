@@ -1,0 +1,16 @@
+.counter-inline {
+	display: inline-flex;
+	font-size: 1.4em;
+}
+
+.counter-btn {
+	width: 35px;
+	margin-bottom: 7px;
+	background-color: #ee5c42;
+	border-radius: 2px;
+	border: none;
+}
+
+.counter-item {
+	margin: 5px;
+}
