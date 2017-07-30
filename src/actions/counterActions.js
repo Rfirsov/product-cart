@@ -1,15 +1,9 @@
-import { INCREMENT, DECREMENT } from '../constants';
+import { GET_PRODUCT_QUANTITY } from '../constants';
 
-export function onIncrement() {
+export function getProductQauntity(quantity) {
+	console.log(quantity);
 	return {
-		type: INCREMENT,
-		count: 1
-	}
-}
-
-export function onDecrement() {
-	return {
-		type: DECREMENT,
-		count: 1
+		type: GET_PRODUCT_QUANTITY,
+		quantity
 	}
 }

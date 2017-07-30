@@ -1,14 +1,17 @@
-import { INCREMENT, DECREMENT } from '../constants';
+import { GET_PRODUCT_QUANTITY } from '../constants';
 
 
-const initialState = 1;
+const initialState = {
+	quantity: 1
+};
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case INCREMENT:
-      return state + action.count; 
-    case DECREMENT:
-      return state - action.count;
+    case GET_PRODUCT_QUANTITY:
+      return {
+      	...state, 
+      	quantity: action.quantity
+      }; 
     default: return state;
   }
 }
