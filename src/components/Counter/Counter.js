@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getProductQauntity } from '../../actions/counterActions';
+// import { getProductQauntity } from '../../actions/counterActions';
 import './counter.css';
 
 class Counter extends React.Component {
@@ -30,7 +30,6 @@ class Counter extends React.Component {
 	}
 
   render() {
-  	console.log(this.state.counter);
     return (
     	<div className="counter-inline">
         <button className="counter-btn" onClick={this.onDecrement}>-</button>
@@ -41,17 +40,4 @@ class Counter extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-	return {
-		counter: state.counter
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		getProductQauntity: (quantity) => dispatch(getProductQauntity(quantity))
-	};
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect()(Counter);

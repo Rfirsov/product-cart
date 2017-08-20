@@ -1,4 +1,4 @@
 //products actions
 export const GET_PRODUCTS = 'GET_PRODUCTS'; 
-//counter actions
-export const GET_PRODUCT_QUANTITY = 'GET_PRODUCT_QUANTITY'; 
+//cart actions
+export const ADD_TO_CART = 'ADD_TO_CART'; 

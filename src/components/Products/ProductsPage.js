@@ -2,30 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProducts } from '../../actions/productsActions';
+import { addToCart } from '../../actions/cartActions';
 import Product from './Product.js';
 
 
 class ProductsPage extends React.Component {
+
 	componentDidMount() {
 		this.props.getProducts();
 	}
+
+	handleAddToCart = (product) => {
+		this.props.addToCart(product);
+	}
+
 	render() {
 		const { products,isLoading } = this.props;
 		if (!isLoading) {
 			return <p>Loading</p>;
 		}
+		
 		const productNode = products.map((product) => {
 			return (
 				<Product
 					key={product.id}
-					id={product.id} 
-					category={product.category} 
-					name={product.name} 
-					image={product.image} 
-					price={product.price} 
+					product={product}
+					handleAddToCart={this.handleAddToCart} 
 				/>
 			);
-		}); 
+		});
+
 		return (
 			<div className="container text-center">
 				{productNode}
@@ -51,7 +57,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getProducts: () => dispatch(getProducts())
+		getProducts: () => dispatch(getProducts()),
+		addToCart: (product) => dispatch(addToCart(product))
 	}
 }
 
