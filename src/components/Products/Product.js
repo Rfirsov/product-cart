@@ -6,7 +6,7 @@ const Product = ({handleAddToCart, product}) => {
 		<div className="col-xs-6 col-md-3">
 			<img className="img-responsive" src={product.image} alt={product.name} />
 			<h4>{product.name}</h4>
-			<p className="text-danger">Cost: {product.price}</p>
+			<p className="text-danger">Cost: {product.price} uah</p>
 			<Counter />
 			<button 
 				className="btn btn-primary btn-block"

@@ -10,7 +10,7 @@ import ProductsPage from './components/Products/ProductsPage.js';
 import CartPage from './components/Cart/CartPage.js';
 import WelcomePage from './components/WelcomePage/WelcomePage.js';
 
-// import './styles/index.css';
+import './styles/index.css';
 
 
 render(
