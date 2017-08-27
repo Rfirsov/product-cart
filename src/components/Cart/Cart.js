@@ -3,11 +3,19 @@ import React from 'react';
 class Cart extends React.Component {
 	render() {
 	console.log(this.props.cart);
-	const { cart } = this.props;
+	const { cart, handleRemoveFromCart } = this.props;
 	const cartTable = cart.map((cartItem) => {
 		return (
 			<tr key={cartItem.id}>
-				<td>{cartItem.name}</td>
+				<td className="text-left">
+					{cartItem.name}
+					<button 
+						type="button"
+						className="close" 
+						onClick={() => {handleRemoveFromCart(cartItem.id)}}>
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</td>
 				<td className="text-center">{cartItem.price} uah</td>
 				<td className="text-center">{cartItem.quantity}</td>
 				<td className="text-right">{cartItem.price * cartItem.quantity} uah</td>
