@@ -1,10 +1,25 @@
 import React from 'react';
 
 class Cart extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			totalSum: 0
+		};	
+	}
+
 	render() {
 	console.log(this.props.cart);
 	const { cart, handleRemoveFromCart } = this.props;
+
+	const totalSum = cart.map((item) => {
+		return item.price * item.quantity;
+	}).reduce((a, b) => {
+		return a + b;
+	}, 0);
+
 	const cartTable = cart.map((cartItem) => {
+		let totals = cartItem.price * cartItem.quantity;
 		return (
 			<tr key={cartItem.id}>
 				<td className="text-left">
@@ -18,11 +33,11 @@ class Cart extends React.Component {
 				</td>
 				<td className="text-center">{cartItem.price} uah</td>
 				<td className="text-center">{cartItem.quantity}</td>
-				<td className="text-right">{cartItem.price * cartItem.quantity} uah</td>
+				<td className="text-right">{totals} uah</td>
 			</tr>
 		)
 	});
-
+	
 		return (
 			<div className="container">
 				<h2 className="text-center">Cart</h2>
@@ -49,7 +64,7 @@ class Cart extends React.Component {
 												<td className="thick-line"></td>
 												<td className="thick-line"></td>
 												<td className="thick-line text-center"><strong>Total sum</strong></td>
-												<td className="thick-line text-right">444 uah</td>
+												<td className="thick-line text-right">{totalSum} uah</td>
 											</tr>
 										</tbody>
 									</table>
