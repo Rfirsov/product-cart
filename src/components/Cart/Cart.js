@@ -18,10 +18,10 @@ class Cart extends React.Component {
 		return a + b;
 	}, 0);
 
-	const cartTable = cart.map((cartItem) => {
+	const cartTable = cart.map((cartItem, index) => {
 		let totals = cartItem.price * cartItem.quantity;
 		return (
-			<tr key={cartItem.id}>
+			<tr key={index}>
 				<td className="text-left">
 					{cartItem.name}
 					<button 
