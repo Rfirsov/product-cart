@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getProducts } from '../../actions/productsActions';
+import { getProducts, setProductQuantity } from '../../actions/productsActions';
 import { addToCart } from '../../actions/cartActions';
 import Product from './Product.js';
 
@@ -16,18 +16,24 @@ class ProductsPage extends React.Component {
 		this.props.addToCart(product);
 	}
 
+	handleSetProductQuantity = (product, quantity) => {
+		let id = product.id;
+		this.props.setProductQuantity(id, quantity);
+	}
+
 	render() {
 		const { products,isLoading } = this.props;
 		if (!isLoading) {
 			return <p>Loading</p>;
 		}
-		
-		const productNode = products.map((product) => {
+		console.log(this.props);
+		const productNode = products.map((product, index) => {
 			return (
 				<Product
-					key={product.id}
+					key={index}
 					product={product}
-					handleAddToCart={this.handleAddToCart} 
+					handleAddToCart={this.handleAddToCart}
+					handleSetProductQuantity={this.handleSetProductQuantity}
 				/>
 			);
 		});
@@ -58,7 +64,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		getProducts: () => dispatch(getProducts()),
-		addToCart: (product) => dispatch(addToCart(product))
+		addToCart: (product) => dispatch(addToCart(product)),
+		setProductQuantity: (id, quantity) => dispatch(setProductQuantity(id, quantity))
 	}
 }
 

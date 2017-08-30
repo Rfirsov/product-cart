@@ -1,4 +1,4 @@
-import { GET_PRODUCTS } from '../constants';
+import { GET_PRODUCTS, SET_PRODUCT_QUANTITY } from '../constants';
 
 const initialState = {
 	productList: [],
@@ -12,6 +12,19 @@ export default function products (state = initialState, action) {
 			...state,
 			isLoading: true,
 			productList: action.products
+		}
+		case SET_PRODUCT_QUANTITY:
+		return {
+			...state,
+			productList: state.productList.map((product) => {
+				if(product.id !== action.id) {
+					return product;
+				}
+					return {
+						...product,
+						quantity: action.quantity
+					};
+			})
 		}
 		default: return state;
 	}
