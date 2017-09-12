@@ -22,18 +22,18 @@ class ProductsPage extends React.Component {
 	}
 
 	render() {
-		const { products,isLoading } = this.props;
+		const { products, isLoading } = this.props;
 		if (!isLoading) {
 			return <p>Loading</p>;
 		}
-		console.log(this.props);
+		console.log(this.props.products);
 		const productNode = products.map((product, index) => {
 			return (
 				<Product
 					key={index}
 					product={product}
-					handleAddToCart={this.handleAddToCart}
 					handleSetProductQuantity={this.handleSetProductQuantity}
+					handleAddToCart={this.handleAddToCart}
 				/>
 			);
 		});
